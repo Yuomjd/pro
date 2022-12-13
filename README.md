@@ -1,5 +1,8 @@
 # pro
 
+运行端口：8080 (可使用npm run serve -- --port 8080更改) 
+服务器端口：9876 (可在vue.config.js中修改)
+
 ## Project setup
 ```
 npm install
