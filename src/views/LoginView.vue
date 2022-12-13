@@ -77,6 +77,7 @@ export default {
                 message:"注册成功",
                 type:"success"
               });
+              console.log(res.data);
               localStorage.setItem("userName",res.data.userName)
               localStorage.setItem("token",res.data.password)
               this.$router.push('/home')

@@ -26,8 +26,19 @@ const routes = [
   {
     path: '/home',
     name:'home',
-    component: HomeView
+    component: HomeView,
+    children:[
+      {
+        path:"List",
+        component: () => import('../components/UserList.vue')
+      },
+      {
+        path:"Table",
+        component: () => import('../components/UserTable.vue')
+      }
+    ]
   },
+  
 ]
 
 const router = new VueRouter({

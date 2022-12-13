@@ -1,61 +1,73 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <el-table
-      :data="userList"
-      style="width: 100%">
-      <el-table-column
-        prop="userId"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="title"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="id"
-        label="地址">
-      </el-table-column>
-    </el-table>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <el-container>
+      <el-header>Header</el-header>
+      <el-container>
+        <el-aside width="200px"><menu-item></menu-item></el-aside>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
-  
 </template>
 
 <script>
+import MenuItem from '@/components/MenuItem.vue';
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
 
 export default {
-  name: 'HomeView',
-  data:function(){
-    return{
-      userList:{
-        userId:Number,
-        id:Number,
-        title:String,
-        completed:Boolean
-      }
-    }
+  name: "HomeView",
+  data: function () {
+    return {
+      userList: {
+        userId: Number,
+        id: Number,
+        title: String,
+        completed: Boolean,
+      },
+    };
   },
   components: {
-    HelloWorld
+    MenuItem,
   },
-  created(){
-    this.load()
-  },
-  methods:{
-    load(){
-      this.axios({
-        method:"get",
-        url:"http://jsonplaceholder.typicode.com/todos",
-      }).then(res=>{
-        console.log(res);
-        this.userList = res.data
-      })
-    }
-  }
-}
+};
 </script>
+
+<style>
+ .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  .el-aside {
+
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+  
+  .el-main {
+
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+  
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+  
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+  
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
+</style>
