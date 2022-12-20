@@ -1,5 +1,5 @@
 <template>
-  <div style="width:500px;margin:auto">
+  <div id="registerForm" style="width:500px;margin:auto">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="用户名" prop="name">
             <el-input  v-model="ruleForm.name"></el-input>
@@ -97,5 +97,13 @@ export default {
 </script>
 
 <style>
-
+#registerForm{
+  position: absolute;
+  top: 30%;
+  left: 43%;
+  padding: 30px;
+  padding-right: 40px;
+  border: 3px slategray solid;
+  border-radius: 30px;
+}
 </style>
