@@ -1,5 +1,6 @@
 <template>
   <div id="loginForm">
+    <h3>用户注册</h3>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="用户名" prop="name">
             <el-input  v-model="ruleForm.name"></el-input>

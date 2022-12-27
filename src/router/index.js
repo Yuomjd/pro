@@ -29,12 +29,12 @@ const routes = [
     component: HomeView,
     children:[
       {
-        path:"List",
-        component: () => import('../components/UserList.vue')
-      },
-      {
         path:"Table",
         component: () => import('../components/UserTable.vue')
+      },
+      {
+        path:"",
+        component:() => import('../components/UserTable.vue')
       }
     ]
   },
