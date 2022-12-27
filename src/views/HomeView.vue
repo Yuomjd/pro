@@ -1,10 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <el-container>
-      <el-header>Header</el-header>
+    <el-container style="height: 500px; border: 1px solid #eee">
+      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+        <menu-item></menu-item>
+      </el-aside>
+
       <el-container>
-        <el-aside width="200px"><menu-item></menu-item></el-aside>
+        <el-header style="text-align: right; font-size: 12px">
+          <el-dropdown>
+            <i class="el-icon-setting" style="margin-right: 15px"></i>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>用户信息</el-dropdown-item>
+              <el-dropdown-item>修改</el-dropdown-item>
+              <el-dropdown-item>注销</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <span>{{ userName }}</span>
+        </el-header>
+
         <el-main>
           <router-view></router-view>
         </el-main>
@@ -22,52 +35,32 @@ export default {
   name: "HomeView",
   data: function () {
     return {
-      userList: {
-        userId: Number,
-        id: Number,
-        title: String,
-        completed: Boolean,
-      },
+      userName: "",
     };
   },
+  created() {
+    this.getUser();
+  },
   components: {
-    MenuItem,
+    MenuItem
+   
+  },
+  methods: {
+    getUser() {
+      this.userName = localStorage.getItem("userName");
+    },
   },
 };
 </script>
 
 <style>
- .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  
-  .el-aside {
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  line-height: 60px;
+}
 
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-  
-  .el-main {
-
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-  }
-  
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-  
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
+.el-aside {
+  color: #333;
+}
 </style>
